@@ -1,3 +1,5 @@
+<?php
+?>
 <html>
 <head>
     <title>JediTracker - www.elraro.eu</title>
@@ -44,9 +46,10 @@
     }
 </style>
 <?php
-    $url = "http://www.elraro.eu:8080/servers/89.36.214.51/29070/"; // TODO esto habrá que cambiarlo
-    $server = file_get_contents($url);
-
+$url = "http://www.elraro.eu:8080/servers/89.36.214.51/29070/"; // TODO esto habrá que cambiarlo
+$json = file_get_contents($url);
+$server = json_decode($json, true);
+print_r($server);
 ?>
 <div align='center'>
     <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
@@ -59,7 +62,7 @@
 						</span>
             </td>
             <td align='right' valign='middle' BGCOLOR='000000'>
-                <span class='micro'>89.36.214.51:29070</span>
+                <span class='micro'><?php echo $server["ipAddress"] . ':' . $server["port"]; ?></span>
             </td>
         </tr>
         <tr>
