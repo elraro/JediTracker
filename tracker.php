@@ -18,66 +18,78 @@ if ($matches[1] != 200) {
     echo $server["status"];
 }
 ?>
-<html>
-<head>
-    <title>JediTracker - www.elraro.eu</title>
-    <meta http-equiv='refresh' content='300'>
-</head>
+    <html>
+    <head>
+        <title>JediTracker - www.elraro.eu</title>
+        <meta http-equiv='refresh' content='300'>
+    </head>
 <body>
-<style type='text/css' media='screen'>
-    body {
-        font-size: 11px;
-        color: #cdcdcd;
-        background-color: #333333;
-        font-family: Arial
-    }
+    <style type='text/css' media='screen'>
+        body {
+            font-size: 11px;
+            color: #cdcdcd;
+            background-color: #333333;
+            font-family: Arial
+        }
 
-    td {
-        color: #cdcdcd;
-        font-size: 11px;
-        font-family: Arial
-    }
+        td {
+            color: #cdcdcd;
+            font-size: 11px;
+            font-family: Arial
+        }
 
-    .mini10 {
-        color: #cdcdcd;
-        font-size: 11px;
-        font-family: Arial
-    }
+        .mini10 {
+            color: #cdcdcd;
+            font-size: 11px;
+            font-family: Arial
+        }
 
-    .micro {
-        font-size: 9px;
-        font-family: Verdana:
-        color: #cdcdcd
-    }
+        .micro {
+            font-size: 9px;
+            font-family: Verdana:
+            color: #cdcdcd
+        }
 
-    .title {
-        font-size: 11px;
-        font-family: Verdana
-    }
+        .title {
+            font-size: 11px;
+            font-family: Verdana
+        }
 
-    a:link {
-        color: #cdcdcd
-    }
+        a:link {
+            color: #cdcdcd
+        }
 
-    a:visited {
-        color: #cdcdcd
-    }
-</style>
+        a:visited {
+            color: #cdcdcd
+        }
+    </style>
 <div align='center'>
-
+<?php if ($serverOff) { ?>
     <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
         <tr>
             <td align='left' valign='middle' BGCOLOR='000000'>
                 <span class='title'>
-                    <?php if ($serverOff) { ?>
                     <div align=center>The server located at<br>ip: <?php echo $ip; ?> port: <?php echo $port; ?><br>is offline or not responding.</div>
                 </span>
-                <?php } else { ?>
+            </td>
+    </table>
+    <divalign
+    ='center'>
+    <p><span class='micro'><a href='http://www.jeditracker.com/' target='_blank'>JediTracker</a><br>by bLaSt<br><font
+                color='yellow'><br><a href='http://www.jeditracker.com/' target='_blank'><font color='green'><blink>JEDITRACKER</blink></font></a></font></span>
+    </p>
+    </div>
+    </body>
+    </html>
+<?php } else { ?>
+    <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
+        <tr>
+            <td align='left' valign='middle' BGCOLOR='000000'>
+                <span class='title'>
                     <b><font color='white'><font color=red>J</font><font color=white>K</font><font
                                 color=red>|</font><font color=white>N</font><font color=red>G</font><font
                                 color=white>'</font><font color=red>TFFA</font><font color=white>.ESL</font></b>
                 </span>
-                <?php } ?>
             </td>
             <td align='right' valign='middle' BGCOLOR='000000'>
                 <span class='micro'><?php echo $server["ipAddress"] . ':' . $server["port"]; ?></span>
@@ -168,6 +180,7 @@ if ($matches[1] != 200) {
             </td>
         </tr>
     </table>
-</div>
-</body>
-</html>
+    </div>
+    </body>
+    </html>
+<?php } ?>
