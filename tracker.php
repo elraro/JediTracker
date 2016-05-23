@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET["ipaddress"]) && isset($_GET["port"])) {
+if (isset($_GET["ipaddress"]) && isset($_GET["port"])) {
     $ip = $_GET["ipaddress"];
     $port = $_GET["port"];
 } else {
@@ -7,10 +7,12 @@ if(isset($_GET["ipaddress"]) && isset($_GET["port"])) {
 }
 
 $url = "http://www.elraro.eu:8080/servers/" . $ip . "/" . $port . "/";
-//echo $url;
 $json = file_get_contents($url);
-$server = json_decode($json);
-print_r($server);
+$matches = array();
+preg_match('#HTTP/\d+\.\d+ (\d+)#', $http_response_header[0], $matches);
+echo $matches[1]; // HTTP/1.1 410 Gone return 410
+$server = json_decode($json, true);
+var_dump($server);
 echo $server["status"];
 ?>
 <html>
@@ -77,7 +79,8 @@ echo $server["status"];
                 <table width='100%' border='0' cellspacing='0' cellpadding='3'>
                     <tr>
                         <td align='middle' valign='top' BGCOLOR='333333' width='135'>
-                            <img src="<?php echo "map_pics/" . $server["parameters"]["mapname"] . ".jpg" ?>" height='90' width='120' border=1 vspace=2>
+                            <img src="<?php echo "map_pics/" . $server["parameters"]["mapname"] . ".jpg" ?>" height='90'
+                                 width='120' border=1 vspace=2>
                             <br>
                             <span class='micro'>
                                 <a href='http://jk.elraro.eu/' target='_blank'>JediTracker</a>
@@ -116,10 +119,13 @@ echo $server["status"];
                             <b>Limite de Muertes:</b> <?php echo $server["parameters"]["fraglimit"]; ?><br>
                             <b>Limite de Tiempo:</b> <?php echo $server["parameters"]["timelimit"]; ?> mins.
                             <div style="margin-top: 10px;">
-                                <b><span class='micro'>Ejecutando el MOD:</span></b> <span class='micro'><i><?php echo $server["parameters"]["gamename"]; ?></i></span><br>
-                                <b><span class='micro'>Version:</span></b> <span class='micro'><i><?php echo $server["parameters"]["version"]; ?></i></span>
+                                <b><span class='micro'>Ejecutando el MOD:</span></b> <span
+                                    class='micro'><i><?php echo $server["parameters"]["gamename"]; ?></i></span><br>
+                                <b><span class='micro'>Version:</span></b> <span
+                                    class='micro'><i><?php echo $server["parameters"]["version"]; ?></i></span>
                                 <br>
-                                <b><span class='micro'>Jugadores Conectados:</span></b> <span class='micro'><i><?php echo $server["currentClients"] . "/" . $server["maxClients"]?></i></span>
+                                <b><span class='micro'>Jugadores Conectados:</span></b> <span
+                                    class='micro'><i><?php echo $server["currentClients"] . "/" . $server["maxClients"] ?></i></span>
                                 <div align='center'>
                                     <p>
                                         <span class='micro'>
