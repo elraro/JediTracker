@@ -10,10 +10,13 @@ $url = "http://www.elraro.eu:8080/servers/" . $ip . "/" . $port . "/";
 $json = file_get_contents($url);
 $matches = array();
 preg_match('#HTTP/\d+\.\d+ (\d+)#', $http_response_header[0], $matches);
-echo $matches[1]; // HTTP/1.1 410 Gone return 410
-$server = json_decode($json, true);
-var_dump($server);
-echo $server["status"];
+if ($matches[1] != 200) {
+    $serverOff = true;
+} else {
+    $server = json_decode($json, true);
+    var_dump($server);
+    echo $server["status"];
+}
 ?>
 <html>
 <head>
@@ -61,14 +64,20 @@ echo $server["status"];
     }
 </style>
 <div align='center'>
+
     <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
         <tr>
             <td align='left' valign='middle' BGCOLOR='000000'>
-						<span class='title'>
-							<b><font color='white'><font color=red>J</font><font color=white>K</font><font
-                                        color=red>|</font><font color=white>N</font><font color=red>G</font><font
-                                        color=white>'</font><font color=red>TFFA</font><font color=white>.ESL</font></b>
-						</span>
+                <span class='title'>
+                    <?php if ($serverOff) { ?>
+                    <div align=center>The server located at<br>ip: <?php echo $ip; ?> port: <?php echo $port; ?><br>is offline or not responding.</div>
+                </span>
+                <?php } else { ?>
+                    <b><font color='white'><font color=red>J</font><font color=white>K</font><font
+                                color=red>|</font><font color=white>N</font><font color=red>G</font><font
+                                color=white>'</font><font color=red>TFFA</font><font color=white>.ESL</font></b>
+                </span>
+                <?php } ?>
             </td>
             <td align='right' valign='middle' BGCOLOR='000000'>
                 <span class='micro'><?php echo $server["ipAddress"] . ':' . $server["port"]; ?></span>
