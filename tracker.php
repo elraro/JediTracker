@@ -20,7 +20,7 @@ if ($matches[1] != 200) {
 ?>
     <html>
     <head>
-        <title>JediTracker - www.elraro.eu</title>
+        <title>JediTracker - jt.elraro.eu</title>
         <meta http-equiv='refresh' content='300'>
     </head>
 <body>
@@ -72,11 +72,11 @@ if ($matches[1] != 200) {
                     <div align=center>The server located at<br>ip: <?php echo $ip; ?> port: <?php echo $port; ?><br>is offline or not responding.</div>
                 </span>
             </td>
+        </tr>
     </table>
-    <divalign
-    ='center'>
-    <p><span class='micro'><a href='http://www.jeditracker.com/' target='_blank'>JediTracker</a><br>by bLaSt<br><font
-                color='yellow'><br><a href='http://www.jeditracker.com/' target='_blank'><font color='green'><blink>JEDITRACKER</blink></font></a></font></span>
+    <div align = 'center'>
+    <p><span class='micro'><a href='http://jk.elraro.eu/' target='_blank'>JediTracker</a><br>by elraro<br><font
+                color='yellow'><br><a href='http://jk.elraro.eu/' target='_blank'><font color='green'><blink>JEDITRACKER</blink></font></a></font></span>
     </p>
     </div>
     </body>
@@ -180,7 +180,7 @@ if ($matches[1] != 200) {
             </td>
         </tr>
     </table>
-    </div>
-    </body>
-    </html>
+</div>
+</body>
+</html>
 <?php } ?>
