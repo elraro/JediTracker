@@ -14,8 +14,6 @@ if ($matches[1] != 200) {
     $serverOff = true;
 } else {
     $server = json_decode($json, true);
-    var_dump($server);
-    echo $server["status"];
 }
 ?>
     <html>
