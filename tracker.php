@@ -1,4 +1,7 @@
 <?php
+
+require 'utilities.php';
+
 if (isset($_GET["ipaddress"]) && isset($_GET["port"])) {
     $ip = $_GET["ipaddress"];
     $port = $_GET["port"];
@@ -6,15 +9,8 @@ if (isset($_GET["ipaddress"]) && isset($_GET["port"])) {
     die();
 }
 
-$url = "http://www.elraro.eu:8080/servers/" . $ip . "/" . $port . "/";
-$json = file_get_contents($url);
-$matches = array();
-preg_match('#HTTP/\d+\.\d+ (\d+)#', $http_response_header[0], $matches);
-if ($matches[1] != 200) {
-    $serverOff = true;
-} else {
-    $server = json_decode($json, true);
-}
+$serverStatus = getServerStatus($ip, $port);
+
 ?>
     <html>
     <head>
@@ -62,7 +58,7 @@ if ($matches[1] != 200) {
         }
     </style>
 <div align='center'>
-<?php if ($serverOff) { ?>
+<?php if ($serverStatus[0]) { ?>
     <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
         <tr>
             <td align='left' valign='middle' BGCOLOR='000000'>
@@ -79,7 +75,8 @@ if ($matches[1] != 200) {
     </div>
     </body>
     </html>
-<?php } else { ?>
+<?php } else {
+    $server = $serverStatus[1]; ?>
     <table width='425' border='0' cellspacing='0' cellpadding='1' BGCOLOR='000000'>
         <tr>
             <td align='left' valign='middle' BGCOLOR='000000'>
