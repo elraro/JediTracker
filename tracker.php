@@ -12,7 +12,7 @@ if (isset($_GET["ipaddress"]) && isset($_GET["port"])) {
 $serverStatus = getServerStatus($ip, $port);
 
 ?>
-    <html>
+<html>
     <head>
         <title>JediTracker - jt.elraro.eu</title>
         <meta http-equiv='refresh' content='300'>
@@ -69,8 +69,8 @@ $serverStatus = getServerStatus($ip, $port);
         </tr>
     </table>
     <div align = 'center'>
-    <p><span class='micro'><a href='http://jk.elraro.eu/' target='_blank'>JediTracker</a><br>by elraro<br><font
-                color='yellow'><br><a href='http://jk.elraro.eu/' target='_blank'><font color='green'><blink>JEDITRACKER</blink></font></a></font></span>
+    <p><span class='micro'><a href='https://jk.elraro.eu/' target='_blank'>JediTracker</a><br>by elraro<br><font
+                color='yellow'><br><a href='https://jk.elraro.eu/' target='_blank'><font color='green'><blink>JEDITRACKER</blink></font></a></font></span>
     </p>
     </div>
     </body>
